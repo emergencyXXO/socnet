@@ -1,0 +1,14 @@
+aside a {
+    display: block;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+aside {
+    width: calc(25% - 15px);
+    background-color: #000;
+    padding: 15px;
+    box-sizing: border-box;
+}

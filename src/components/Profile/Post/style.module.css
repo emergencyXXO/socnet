@@ -1,0 +1,19 @@
+.img {
+    margin-right: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.text{
+    color: #fff;
+}
+.post{
+    margin-bottom: 20px;
+}
+.like{
+    color: #fff;
+    margin-left: 15px;
+}

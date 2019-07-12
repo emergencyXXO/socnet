@@ -6,7 +6,7 @@ function Header() {
         <header>
             <div className="container">
                 <div className={cls.logo} style={{backgroundImage: 'url(https://www.freeiconspng.com/uploads/flame-logo-png-30.png)'}}></div>
-                <p className={cls.header}>SocNet</p>
+                <p className={cls.header}>NoSoc.Net</p>
             </div>
         </header>
     )

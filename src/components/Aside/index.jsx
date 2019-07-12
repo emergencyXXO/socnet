@@ -1,15 +1,16 @@
 import React from 'react';
-import  './style.module.css';
+import './style.module.css';
+import {NavLink} from "react-router-dom/umd/react-router-dom";
 
-function Aside() {
+const Aside = () => {
     return (
 
         <aside>
-            <a href="#">Profile</a>
-            <a href="#">Message</a>
-            <a href="#">News</a>
-            <a href="#">Music</a>
-            <a href="#">Setting</a>
+            <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/dialogs">Message</NavLink>
+            <NavLink to="/news">News</NavLink>
+            <NavLink to="/music">Music</NavLink>
+            <NavLink to="/settings">Setting</NavLink>
         </aside>
     )
 }

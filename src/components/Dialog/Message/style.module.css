@@ -1,0 +1,15 @@
+.dialog_item .name{
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.dialog_item:last-child .name{
+    margin-bottom: 0;
+}
+.img{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}

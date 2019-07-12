@@ -2,7 +2,6 @@
     width: calc(75% - 15px);
     background-color: #000;
     padding: 15px;
-    box-sizing: border-box;
 }
 
 .background {
@@ -65,20 +64,9 @@
     color: #fff;
 }
 
-.post__area {
-    margin-top: 50px;
-}
 
 .post__area {
     margin-bottom: 30px;
+    margin-top: 50px;
 }
 
-.post__area .img {
-    margin-right: 30px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-}

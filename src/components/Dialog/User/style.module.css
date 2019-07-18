@@ -1,6 +1,10 @@
 .dialog_item .name{
     margin-top: 0;
     margin-bottom: 15px;
+    text-decoration: none;
+    color: #000;
+    display: block;
+    cursor: pointer;
 }
 .dialog_item:last-child .name{
     margin-bottom: 0;

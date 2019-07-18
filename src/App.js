@@ -9,23 +9,24 @@ import Music from './components/Music/';
 import Settings from './components/Settings/';
 import {BrowserRouter, Route} from "react-router-dom/umd/react-router-dom";
 
-const App = () => {
-        return (
-            <BrowserRouter>
-                <div className="App ">
-                    <Header/>
-                    <div className="main__part container">
-                        <Aside/>
-                        <Route path="/dialogs" component={Dialog}/>
-                        <Route path="/profile" component={Profile}/>
-                        <Route path="/news" component={News}/>
-                        <Route path="/music" component={Music}/>
-                        <Route path="/settings" component={Settings}/>
-                    </div>
+const App = (props) => {
+
+    return (
+        <BrowserRouter>
+            <div className="App ">
+                <Header/>
+                <div className="main__part container">
+                    <Aside friends={props.store.Aside.FriendsData}/>
+                    <Route path="/dialogs" render={() => <Dialog users={props.store.DialogPage.UserData} messages={props.store.DialogPage.MessageData}/>}/>
+                    <Route path="/profile" render={() => <Profile posts={props.store.ProfilePage.PostData}/>}/>
+                    <Route path="/news" render={() => <News/>}/>
+                    <Route path="/music" render={() => <Music/>}/>
+                    <Route path="/settings" render={() => <Settings/>}/>
                 </div>
-            </BrowserRouter>
-        )
-            ;
-    }
+            </div>
+        </BrowserRouter>
+    )
+        ;
+}
 
 export default App;

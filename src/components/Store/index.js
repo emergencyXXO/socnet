@@ -1,3 +1,5 @@
+import RerenderFunc from "../../render";
+
 let Store = {
     ProfilePage: {
         PostData: [
@@ -28,4 +30,15 @@ let Store = {
         ]
     }
 }
+
+export let AddPost = (message) => {
+    let NewPost = {
+        id : 5,
+        text: message,
+        like: 10
+    }
+    Store.ProfilePage.PostData.push(NewPost);
+    RerenderFunc(Store);
+}
+
 export default Store;

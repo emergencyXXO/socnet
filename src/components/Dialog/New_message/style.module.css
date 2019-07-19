@@ -1,0 +1,21 @@
+.message button {
+    background: transparent;
+    padding: 5px 25px;
+    border: 1px solid #000;
+    outline: none;
+    color: #000;
+}
+.message input {
+    width: 100%;
+    resize: none;
+    padding: 15px;
+    background: transparent;
+    border: 1px solid #000;
+    color: #000;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.message input::-webkit-input-placeholder {
+    color: #000;
+}

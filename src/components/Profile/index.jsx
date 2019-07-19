@@ -12,7 +12,7 @@ const Profile = (props) => {
         <div className={cls.content}>
             <div className={cls.background} style={{ backgroundImage: 'url(https://maxcdn.icons8.com/app/uploads/2016/06/zebra-wallpaper-desktop-background-p-o-ibackgroundz.com_1-2-1000x732.jpg)'}}></div>
             <Profile_info />
-            <New_post />
+            <New_post addPost={props.addPost} />
             <div className={cls.post__area}>
                 {props.posts.map(el => <Post id={el.id} text={el.text} like={el.like} />)}
             </div>

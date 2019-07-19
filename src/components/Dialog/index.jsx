@@ -3,6 +3,7 @@ import cls from './style.module.css';
 import {BrowserRouter} from "react-router-dom";
 import User from './User/';
 import Message from './Message/';
+import New_message from "./New_message";
 
 const Dialog = (props) => {
 
@@ -19,10 +20,7 @@ const Dialog = (props) => {
                     <div className={cls.chart_screen}>
                         {props.messages.map(el => <Message id={el.id} text={el.text}/>)}
                     </div>
-                    <div className={cls.message}>
-                        <input type="text" placeholder="type"/>
-                        <button>submit</button>
-                    </div>
+                    <New_message />
                 </div>
             </div>
         </BrowserRouter>

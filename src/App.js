@@ -18,7 +18,7 @@ const App = (props) => {
                 <div className="main__part container">
                     <Aside friends={props.store.Aside.FriendsData}/>
                     <Route path="/dialogs" render={() => <Dialog users={props.store.DialogPage.UserData} messages={props.store.DialogPage.MessageData}/>}/>
-                    <Route path="/profile" render={() => <Profile posts={props.store.ProfilePage.PostData}/>}/>
+                    <Route path="/profile" render={() => <Profile posts={props.store.ProfilePage.PostData} addPost={props.addPost}/>}/>
                     <Route path="/news" render={() => <News/>}/>
                     <Route path="/music" render={() => <Music/>}/>
                     <Route path="/settings" render={() => <Settings/>}/>

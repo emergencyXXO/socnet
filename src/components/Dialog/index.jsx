@@ -20,7 +20,7 @@ const Dialog = (props) => {
                     <div className={cls.chart_screen}>
                         {props.messages.map(el => <Message id={el.id} text={el.text}/>)}
                     </div>
-                    <New_message />
+                    <New_message/>
                 </div>
             </div>
         </BrowserRouter>

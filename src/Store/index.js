@@ -1,10 +1,15 @@
-let RerenderFunc = () => {
+const ADD_POST = 'ADD-POST';
+const CHANGE_TEXT_AREA = 'CHANGE-TEXT-AREA';
 
-}
+const ADD_MASSAGE = 'ADD-MASSAGE';
+const CHANGE_INPUT_AREA = 'CHANGE-INPUT-AREA';
 
 let Store = {
     getState() {
         return this._state;
+    },
+    _callSubscriber() {
+
     },
     _state: {
         ProfilePage: {
@@ -27,7 +32,8 @@ let Store = {
                 {id: 2, text: "asdasd"},
                 {id: 3, text: "asdasd"},
                 {id: 4, text: "Galasdia"},
-            ]
+            ],
+            inputArea: ""
         },
         Aside: {
             FriendsData: [
@@ -39,10 +45,12 @@ let Store = {
     },
 
     subscribe(observer) {
-        RerenderFunc = observer;
+        this._callSubscriber = observer;
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+
+
+        if (action.type === ADD_POST) {
             let NewPost = {
                 id: 5,
                 text: this._state.ProfilePage.textArea,
@@ -50,14 +58,37 @@ let Store = {
             }
             this._state.ProfilePage.PostData.push(NewPost);
             this._state.ProfilePage.textArea = '';
-            RerenderFunc(this._state);
+            this._callSubscriber(this._state);
 
-        } else if (action.type === 'CHANGE-TEXT-AREA') {
+        } else if (action.type === CHANGE_TEXT_AREA) {
+
             this._state.ProfilePage.textArea = action.massage;
-            RerenderFunc(this._state);
+            this._callSubscriber(this._state);
+
+        }  else if (action.type === ADD_MASSAGE) {
+
+            let NewMass = {
+                id: 65,
+                text: this._state.DialogPage.inputArea,
+            }
+
+            this._state.DialogPage.MessageData.push(NewMass);
+            this._state.DialogPage.inputArea = '';
+            this._callSubscriber(this._state);
+            
+        }   else if (action.type === CHANGE_INPUT_AREA) {
+
+            this._state.DialogPage.inputArea = action.massage;
+            this._callSubscriber(this._state);
+
         }
     }
 }
+export const AddPostActionCreator = () => ({type: ADD_POST});
+export const TextChangeActionCreator = (text) => ({type: CHANGE_TEXT_AREA, massage: text});
 
+
+export const AddMassageActionCreator = () => ({type: ADD_MASSAGE});
+export const InputChangeActionCreator = (text) => ({type: CHANGE_INPUT_AREA, massage: text});
 
 export default Store;

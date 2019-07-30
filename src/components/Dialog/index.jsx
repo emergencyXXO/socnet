@@ -13,14 +13,14 @@ const Dialog = (props) => {
             <div className={`line ${cls.dialog_area}`}>
                 <div className={cls.dialog_list}>
                     <p className={cls.had}>List</p>
-                    {props.users.map(el => <User id={el.id} name={el.name}/>)}
+                    {props.DialogPage.UserData.map(el => <User id={el.id} name={el.name}/>)}
 
                 </div>
                 <div className={cls.chart_area}>
                     <div className={cls.chart_screen}>
-                        {props.messages.map(el => <Message id={el.id} text={el.text}/>)}
+                        {props.DialogPage.MessageData.map(el => <Message id={el.id} text={el.text}/>)}
                     </div>
-                    <New_message/>
+                    <New_message dispatch={props.dispatch} inputArea={props.DialogPage.inputArea}/>
                 </div>
             </div>
         </BrowserRouter>

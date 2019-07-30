@@ -17,8 +17,9 @@ const App = (props) => {
             <Header/>
             <div className="main__part container">
                 <Aside friends={props.store.Aside.FriendsData}/>
-                <Route path="/dialogs" render={() => <Dialog users={props.store.DialogPage.UserData}
-                                                             messages={props.store.DialogPage.MessageData}/>}/>
+                <Route path="/dialogs"
+                       render={() => <Dialog DialogPage={props.store.DialogPage} dispatch={props.dispatch}
+                       />}/>
                 <Route path="/profile" render={() => <Profile profilePage={props.store.ProfilePage}
 
                                                               dispatch={props.dispatch}/>}/>

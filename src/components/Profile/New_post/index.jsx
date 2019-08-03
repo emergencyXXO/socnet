@@ -1,11 +1,13 @@
 import React from 'react';
 import cls from './style.module.css';
-import {AddPostActionCreator,TextChangeActionCreator} from "../../../Store";
+import {AddPostActionCreator, TextChangeActionCreator} from "../../../reducer/ProfilePageReducer";
+
 
 
 
 function New_post(props) {
     let submit = React.createRef();
+    
     let sub_action = () => {
         props.dispatch(AddPostActionCreator());
 
@@ -13,7 +15,6 @@ function New_post(props) {
 
     let text_change = () => {
         let text = submit.current.value;
-        debugger;
         props.dispatch(TextChangeActionCreator(text));
     }
 

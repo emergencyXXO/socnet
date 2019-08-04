@@ -1,0 +1,57 @@
+.user_item {
+  align-items: center;
+  margin-bottom: 30px;
+  .img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+  }
+
+  .follow {
+    background-color: green;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 15px;
+    border: 1px solid #fff;
+    width: 94px;
+    outline: none;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+  }
+  .unfollow {
+    background-color: red;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 15px;
+    border: 1px solid #fff;
+    outline: none;
+    cursor: pointer;
+    width: 94px;
+    display: block;
+    text-align: center;
+  }
+  & > .right {
+    border: 1px solid #fff;
+    width: 100%;
+    margin-left: 15px;
+    padding: 15px;
+    justify-content: space-between;
+
+  }
+  .name {
+    color: #fff;
+    margin-bottom: 50px;
+  }
+  .status {
+    color: #fff;
+  }
+  .location {
+    color: #fff;
+  }
+}

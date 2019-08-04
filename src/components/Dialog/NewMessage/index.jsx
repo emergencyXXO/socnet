@@ -1,16 +1,17 @@
 import React from 'react';
 import cls from './style.module.css';
-import {AddMassageActionCreator, InputChangeActionCreator} from "../../../Store";
 
-const New_message = (props) => {
+
+
+const NewMessage = (props) => {
     let inputValue = React.createRef();
 
     let  newMess = () => {
-        props.dispatch(AddMassageActionCreator());
+        props.newMess();
     }
     let text_change = () => {
         let text = inputValue.current.value;
-        props.dispatch(InputChangeActionCreator(text));
+        props.text_change(text);
 
     }
     return (
@@ -21,4 +22,4 @@ const New_message = (props) => {
     )
 }
 
-export default New_message;
+export default NewMessage;

@@ -372,6 +372,9 @@ template {
   font-size: 14px;
   font-family: "OpenSans", sans-serif;
 }
+p{
+  margin: 0;
+}
 .line{
   display: flex;
   flex-direction: row;

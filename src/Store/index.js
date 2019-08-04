@@ -1,8 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const CHANGE_TEXT_AREA = 'CHANGE-TEXT-AREA';
-
-const ADD_MASSAGE = 'ADD-MASSAGE';
-const CHANGE_INPUT_AREA = 'CHANGE-INPUT-AREA';
+import ProfilePageReducer from "../reducer/ProfilePageReducer";
+import DialogPageReducer from "../reducer/DialogPageReducer";
+import AsideReducer from "../reducer/AsideReducer";
 
 let Store = {
     getState() {
@@ -50,45 +48,18 @@ let Store = {
     dispatch(action) {
 
 
-        if (action.type === ADD_POST) {
-            let NewPost = {
-                id: 5,
-                text: this._state.ProfilePage.textArea,
-                like: 10
-            }
-            this._state.ProfilePage.PostData.push(NewPost);
-            this._state.ProfilePage.textArea = '';
-            this._callSubscriber(this._state);
+        this._state.ProfilePage = ProfilePageReducer(this._state.ProfilePage, action);
+        this._state.DialogPage = DialogPageReducer(this._state.DialogPage, action);
+        this._state.Aside = AsideReducer(this._state.Aside, action);
 
-        } else if (action.type === CHANGE_TEXT_AREA) {
+        this._callSubscriber(this._state);
 
-            this._state.ProfilePage.textArea = action.massage;
-            this._callSubscriber(this._state);
 
-        }  else if (action.type === ADD_MASSAGE) {
-
-            let NewMass = {
-                id: 65,
-                text: this._state.DialogPage.inputArea,
-            }
-
-            this._state.DialogPage.MessageData.push(NewMass);
-            this._state.DialogPage.inputArea = '';
-            this._callSubscriber(this._state);
-            
-        }   else if (action.type === CHANGE_INPUT_AREA) {
-
-            this._state.DialogPage.inputArea = action.massage;
-            this._callSubscriber(this._state);
-
-        }
     }
 }
-export const AddPostActionCreator = () => ({type: ADD_POST});
-export const TextChangeActionCreator = (text) => ({type: CHANGE_TEXT_AREA, massage: text});
 
 
-export const AddMassageActionCreator = () => ({type: ADD_MASSAGE});
-export const InputChangeActionCreator = (text) => ({type: CHANGE_INPUT_AREA, massage: text});
+
+
 
 export default Store;

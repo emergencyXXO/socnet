@@ -1,25 +1,24 @@
 .user_page {
-    width: calc(75% - 15px);
-    background-color: #000;
-    padding: 15px;
+	width: calc(75% - 15px);
+	background-color: #000;
+	padding: 15px;
 
-    .had {
-        font-size: 24px;
-        color: #fff;
-        margin: 0;
-        margin-bottom: 30px;
-
-    }
-    .user_list {
-        margin-bottom: 40px;
-    }
-    .show{
-        margin: 0 auto;
-        margin-top: 30px;
-        background-color: transparent;
-        color: #fff;
-        font-size: 16px;
-        padding: 5px 15px;
-        border: 1px solid #fff;
-    }
+	.had {
+		font-size: 24px;
+		color: #fff;
+		margin: 0;
+		margin-bottom: 30px;
+	}
+	.user_list {
+		margin-bottom: 40px;
+	}
+	.show {
+		margin: 0 auto;
+		margin-top: 30px;
+		background-color: transparent;
+		color: #fff;
+		font-size: 16px;
+		padding: 5px 15px;
+		border: 1px solid #fff;
+	}
 }

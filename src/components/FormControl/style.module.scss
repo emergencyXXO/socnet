@@ -1,9 +1,10 @@
-import React from 'react';
-
-export const Textarea = ({input,meta,...props}) =>{
-    return(
-        <div>
-            <textarea {...input} {...props}/>
-        </div>
-    )
+.formControl{
+  .error{
+    border: 1px solid red;
+  }
+  .errorMes{
+    color: red;
+    display: block;
+    margin-bottom: 15px;
+  }
 }

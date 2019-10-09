@@ -1,12 +1,14 @@
 import React from 'react';
 import './style.module.css';
-import {NavLink} from "react-router-dom/umd/react-router-dom";
+import {NavLink} from "react-router-dom";
 import MyFriendsCont from "./MyFriends/container";
+
 
 const Aside = () => {
     return (
 
         <aside>
+
             <div className="menu">
                 <NavLink to="/profile">Profile</NavLink>
                 <NavLink to="/dialogs">Message</NavLink>
@@ -16,6 +18,7 @@ const Aside = () => {
                 <NavLink to="/settings">Setting</NavLink>
             </div>
             <MyFriendsCont />
+
         </aside>
 
 

@@ -1,5 +1,20 @@
 import {connect} from "react-redux";
+import React from "react";
 import Dialog from "./index";
+import {withAuthRedirect} from "../../hoc/withAuth";
+import {compose} from "redux";
+
+
+class DialogContainer extends React.Component{
+
+
+    render() {
+
+
+        return <Dialog {...this.props} />
+
+    }
+}
 
 
 let mapStateToProps = (state) => {
@@ -10,13 +25,7 @@ let mapStateToProps = (state) => {
 
 };
 
-let mapDispatchToProps = (dispatch) => {
-    return{
-
-    }
-};
 
 
-const DialogCont = connect(mapStateToProps,mapDispatchToProps)(Dialog);
 
-export default DialogCont;
+export default compose(connect(mapStateToProps),withAuthRedirect)(DialogContainer);

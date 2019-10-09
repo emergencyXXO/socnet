@@ -1,26 +1,16 @@
-import React from 'react';
+import PostArea from './index';
+import { connect } from 'react-redux';
+import { DeletePostActionCreator } from '../../../reducer/ProfilePageReducer';
 
-import PostArea from "./index";
-import {connect} from "react-redux";
-
-
-
-
-
-let mapStateToProps = (state) => {
-    return{
-        PostData: state.ProfilePage.PostData
-    }
-
+let mapStateToProps = state => {
+	return {
+		PostData: state.ProfilePage.PostData,
+	};
 };
 
-let mapDispatchToProps = (dispatch) => {
-    return{
-
-    }
-};
-
-
-const PostAreaCont = connect(mapStateToProps,mapDispatchToProps)(PostArea);
+const PostAreaCont = connect(
+	mapStateToProps,
+	{ DeletePostActionCreator },
+)(PostArea);
 
 export default PostAreaCont;

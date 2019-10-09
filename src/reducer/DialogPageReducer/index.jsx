@@ -1,5 +1,4 @@
 const ADD_MASSAGE = 'ADD-MASSAGE';
-const CHANGE_INPUT_AREA = 'CHANGE-INPUT-AREA';
 
 let InitialState = {
     UserData: [
@@ -13,8 +12,7 @@ let InitialState = {
         {id: 2, text: "asdasd"},
         {id: 3, text: "asdasd"},
         {id: 4, text: "Galasdia"},
-    ],
-    inputArea: ""
+    ]
 };
 
 
@@ -22,19 +20,11 @@ let DialogPageReducer = (state = InitialState, action) => {
 
 
     switch (action.type) {
-        case  CHANGE_INPUT_AREA:
-            return {
-                ...state,
-                inputArea: action.massage
-            }
-
 
         case ADD_MASSAGE: {
-            let NewMass = state.inputArea;
             return {
                 ...state,
-                inputArea: '',
-                MessageData: [...state.MessageData, {id: 65, text: NewMass}]
+                MessageData: [...state.MessageData, {id: 65, text: action.NewMess}]
             }
         }
 
@@ -46,5 +36,4 @@ let DialogPageReducer = (state = InitialState, action) => {
 }
 export default DialogPageReducer;
 
-export const AddMassageActionCreator = () => ({type: ADD_MASSAGE});
-export const InputChangeActionCreator = (text) => ({type: CHANGE_INPUT_AREA, massage: text});
+export const AddMassageActionCreator = (NewMess) => ({type: ADD_MASSAGE, NewMess});

@@ -1,22 +1,36 @@
 import React from 'react';
 import cls from './style.module.css';
+import { Field, reduxForm } from 'redux-form';
+import { required, maxLengthCreator } from '../../../util/validations/validators';
+import { Textarea } from '../../FormControl';
 
+const maxLengt10 = maxLengthCreator(10);
 
-function NewPost(props) {
-    let submit = React.createRef();
+let PostForm = props => {
+	return (
+		<form onSubmit={props.handleSubmit}>
+			<Field component={Textarea} name="textarea" placeholder="type news" validate={[required, maxLengt10]} />
+			<button>Send</button>
+		</form>
+	);
+};
 
-    return (
-        <div className={cls.new__post}>
-            <p className="had">My post</p>
-            <textarea ref={submit} onChange={() => {
-                props.text_change(submit.current.value)
-            }} value={props.textArea} placeholder="type news" />
-            <button onClick={() => {
-                props.sub_action()
-            }}>Send
-            </button>
-        </div>
-    )
-}
+const PostReduxForm = reduxForm({
+	form: 'newPostForm',
+})(PostForm);
+
+let NewPost = React.memo(props => {
+	const onSubmit = formData => {
+		console.log(formData);
+		props.AddPost(formData.textarea);
+	};
+
+	return (
+		<div className={cls.new__post}>
+			<p className="had">My post</p>
+			<PostReduxForm onSubmit={onSubmit} />
+		</div>
+	);
+});
 
 export default NewPost;

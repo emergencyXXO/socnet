@@ -1,22 +1,58 @@
-import React from 'react';
-import cls from './style.module.css';
+import React, { useEffect, useState } from 'react';
+import cls from './style.module.scss';
 
+let ProfileStatus = props => {
+	// state = {
+	//     editMode: false,
+	//     status: props.status
+	// }
+	//
+	// componentDidUpdate(prevProps){
+	//     if(prevProps.status != props.status){
+	//         this.setState({status:props.status})
+	//     }
+	//
+	// }
 
-function NewPost(props) {
-    let submit = React.createRef();
+	let [editMode, SetEditMode] = useState(false);
+	let [status, SetStatus] = useState(props.status);
 
-    return (
-        <div className={cls.new__post}>
-            <p className="had">My post</p>
-            <textarea ref={submit} onChange={() => {
-                props.text_change(submit.current.value)
-            }} value={props.textArea} placeholder="type news" />
-            <button onClick={() => {
-                props.sub_action()
-            }}>Send
-            </button>
-        </div>
-    )
-}
+	useEffect(
+		() => {
+			SetStatus(props.status);
+		},
+		[props.status],
+	);
 
-export default NewPost;
+	return (
+		<div className={cls.status}>
+			{!editMode && (
+				<div
+					onDoubleClick={() => {
+						SetEditMode(true);
+					}}
+					className={cls.show}
+				>
+					<p className={cls.text}>{props.status || '---'}</p>
+				</div>
+			)}
+			{editMode && (
+				<div className={cls.edit}>
+					<input
+						value={status}
+						onChange={e => {
+							SetStatus(e.currentTarget.value);
+						}}
+						autoFocus
+						onBlur={() => {
+							SetEditMode(false);
+							props.updateStatus(status);
+						}}
+					/>
+				</div>
+			)}
+		</div>
+	);
+};
+
+export default ProfileStatus;

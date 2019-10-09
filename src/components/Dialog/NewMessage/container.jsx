@@ -1,6 +1,5 @@
-import React from 'react';
 import {connect} from "react-redux";
-import {AddMassageActionCreator, InputChangeActionCreator} from "../../../reducer/DialogPageReducer";
+import {AddMassageActionCreator} from "../../../reducer/DialogPageReducer";
 import NewMessage from "./index";
 
 
@@ -14,11 +13,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return{
-        newMess : () =>{
-            dispatch(AddMassageActionCreator())
-        },
-        text_change: (text) => {
-            dispatch(InputChangeActionCreator(text))
+        newMess : (NewMess) =>{
+            dispatch(AddMassageActionCreator(NewMess))
         }
 
     }

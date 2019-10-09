@@ -1,23 +1,56 @@
 import React from 'react';
-import cls from './style.module.css';
+import Profile from './index';
+import { connect } from 'react-redux';
+import {
+	getProgileInfoThunkCreator,
+	getUserStatusThunkCreator,
+	updateUserStatusThunkCreator,
+} from '../../reducer/ProfilePageReducer';
+import { withRouter } from 'react-router-dom';
+import { withAuthRedirect } from '../../hoc/withAuth';
+import { compose } from 'redux';
+import { getProfilePage } from '../../userSelector';
 
-import NewPostCont from "./NewPost/container";
-import ProfileInfo from "./ProfileInfo";
-import PostArea from "./PostArea/container";
+class ContainerProfile extends React.Component {
+	componentDidMount() {
+		let userId = this.props.match.params.userId;
+		if (!userId) {
+			userId = this.props.myId;
+		}
+		this.props.getProgileInfoThunkCreator(userId);
+		this.props.getUserStatusThunkCreator(userId);
+	}
 
-const Profile = () => {
-
-    return (
-
-        <div className={cls.content}>
-            <div className={cls.background} style={{ backgroundImage: 'url(https://maxcdn.icons8.com/app/uploads/2016/06/zebra-wallpaper-desktop-background-p-o-ibackgroundz.com_1-2-1000x732.jpg)'}}/>
-            <ProfileInfo />
-            <NewPostCont />
-            <PostArea />
-        </div>
-    )
+	render() {
+		return (
+			<Profile
+				profile={this.props.profile}
+				isFetching={this.props.isFetching}
+				status={this.props.status}
+				updateStatus={this.props.updateUserStatusThunkCreator}
+			/>
+		);
+	}
 }
 
-export default Profile;
+let mapStateToProps = state => {
+	return {
+		profile: getProfilePage(state).profile,
+		isFetching: getProfilePage(state).isFetching,
+		status: getProfilePage(state).status,
+		myId: state.AuthPage.id,
+	};
+};
 
-
+export default compose(
+	connect(
+		mapStateToProps,
+		{
+			getProgileInfoThunkCreator,
+			getUserStatusThunkCreator,
+			updateUserStatusThunkCreator,
+		},
+	),
+	withAuthRedirect,
+	withRouter,
+)(ContainerProfile);

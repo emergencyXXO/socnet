@@ -23,6 +23,9 @@
     cursor: pointer;
     display: block;
     text-align: center;
+    &[disabled]{
+      opacity: .5;
+    }
   }
   .unfollow {
     background-color: red;
@@ -35,6 +38,9 @@
     width: 94px;
     display: block;
     text-align: center;
+    &[disabled]{
+      opacity: .5;
+    }
   }
   & > .right {
     border: 1px solid #fff;
@@ -50,6 +56,7 @@
   }
   .status {
     color: #fff;
+    height: 16px;
   }
   .location {
     color: #fff;

@@ -1,23 +1,35 @@
 import React from 'react';
 import cls from './style.module.css';
+import {Field, reduxForm} from "redux-form";
+import {Input} from "../../FormControl";
+import {maxLengthCreator, required} from "../../../util/validations/validators";
+
+const maxLengt10 = maxLengthCreator(10);
+const MessageForm = (props) => {
 
 
+    return(
+        <form onSubmit={props.handleSubmit}>
+            <Field name="message"
+                   component={Input}
+                   placeholder="type"
+                   validate={[required, maxLengt10]}/>
+            <button>submit</button>
+        </form>
+    )
+}
+
+const MessageReduxForm = reduxForm({
+    form:'newMessageFrom'
+})(MessageForm);
 
 const NewMessage = (props) => {
-    let inputValue = React.createRef();
-
-    let  newMess = () => {
-        props.newMess();
-    }
-    let text_change = () => {
-        let text = inputValue.current.value;
-        props.text_change(text);
-
+    const onSubmit = (formData) => {
+            props.newMess(formData.message);
     }
     return (
         <div className={cls.message}>
-            <input ref={inputValue} onChange={text_change} value={props.inputArea} type="text" placeholder="type"/>
-            <button onClick={newMess}>submit</button>
+            <MessageReduxForm onSubmit={onSubmit}/>
         </div>
     )
 }

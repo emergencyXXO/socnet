@@ -1,25 +1,26 @@
 import React from 'react';
-import cls from './style.module.css';
-import {NavLink} from "react-router-dom";
+import Header from './index';
+import { connect } from 'react-redux';
+import { logoutThunkCreator } from '../../reducer/AuthReducer';
 
-function Header() {
-    return (
+class ContainerHeader extends React.Component {
+	logout = () => {
+		this.props.logoutThunkCreator();
+	};
 
-        <header>
-            <div className="container">
-                <div className="line">
-                    <div className="left">
-                        <div className={cls.logo}
-                             style={{backgroundImage: 'url(https://www.freeiconspng.com/uploads/flame-logo-png-30.png)'}}/>
-                        <p className={cls.header}>NoSoc.Net</p>
-                    </div>
-                    <div className="right">
-                        <NavLink to="/login">Login</NavLink>
-                    </div>
-                </div>
-            </div>
-        </header>
-    )
+	render() {
+		return <Header logout={this.logout} {...this.props} />;
+	}
 }
 
-export default Header;
+let MapStateToProps = state => {
+	return {
+		login: state.AuthPage.login,
+		isAuth: state.AuthPage.isAuth,
+	};
+};
+
+export default connect(
+	MapStateToProps,
+	{ logoutThunkCreator },
+)(ContainerHeader);
